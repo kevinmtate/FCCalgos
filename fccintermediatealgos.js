@@ -8,7 +8,7 @@
 */
 
 
-// Sum all numbers in a range
+// SUM ALL NUMBERS IN A RANGE
 function sumAll(arr) {
     arr.sort((x, y) => x > y);
     var num = arr[1];
@@ -20,12 +20,12 @@ function sumAll(arr) {
     return sum + arr[0];
 }
   
-// Return an array that has elements from the first and second array that do not appear in the other array
+// RETURN AN ARRAY THAT HAS ELEMENTS FROM THE FIRST AND SECOND ARRAY THAT DO NOT APPEAR IN THE OTHER ARRAY
 function diffArray(arr1, arr2) {
     return arr1.filter(x => !arr2.includes(x)).concat(arr2.filter(x => !arr1.includes(x)));
 }
 
-// Search and destroy - remove values passed as additional parameters from array
+// SEARCH AND DESTROY - REMOVE VALUES PASSED AS ADDITIONAL PARAMETERS FROM ARRAY
 function destroyer(arr) {
     for (var i = 0; i < arguments.length; i++) {
         if (arr.includes(arguments[i])) {
@@ -35,7 +35,7 @@ function destroyer(arr) {
     return arr;
 }
 
-// Wherefore art thou - return array of objects mathing the input key value pair(s)
+// WHEREFORE ART THOU - RETURN ARRAY OF OBJECTS MATCHING THE INPUT KEY VALUE PAIR(S)
 function whatIsInAName(collection, source) {
     var srcKeys = Object.keys(source);
     return collection.filter(function (obj) {
@@ -48,7 +48,7 @@ function whatIsInAName(collection, source) {
     });
 }
 
-// Spinal case a string
+// SPINAL CASE A STRING
 function spinalCase(str) {
     var strSplit = str.split(/[^A-Za-z]/g).join('-').split('');
     for (var i = 1; i < strSplit.length; i++) {
@@ -60,7 +60,7 @@ function spinalCase(str) {
     return strSplit.join('').toLowerCase();
 }
 
-// Translate the provided string to pig latin.
+// TRANSLATE THE PROVIDED STRING TO PIGLATIN
 function translatePigLatin(str) {
     if (str[0].match(/[aeiou]/)) {
         return str + 'way';
@@ -76,7 +76,7 @@ function translatePigLatin(str) {
     }
 }
 
-// Replace word in sring
+// REPLACE WORD IN STRING
 function myReplace(str, before, after) {
     var strSplit = str.split(' ');
     for (var i = 0; i < strSplit.length; i++) {
@@ -91,7 +91,7 @@ function myReplace(str, before, after) {
     return strSplit.join(' ');
 }
 
-// Pair the DNA strand
+// PAIR THE DNA STRAND
 function pairElement(str) {
     var dnArray = [];
     for (var i = 0; i < str.length; i++) {
@@ -112,7 +112,7 @@ function pairElement(str) {
     return dnArray;
 }
 
-// Find the missing letters in the range
+// FIND THE MISSING LETTERS IN THE RANGE
 function fearNotLetter(str) {
     for(var i = 0; i < str.length; i++) {
         var code = str.charCodeAt(i);
@@ -123,25 +123,89 @@ function fearNotLetter(str) {
     return undefined;
 }
 
-// Sorted union
+// SORTED UNION
 function uniteUnique(arr) {
     return arr;
 }
   
-console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+//  STEAMROLL ARRAY 
+function steamrollArray(arr) {
+    let newArray = func(arr);
+    while (!newArray.every(elem => !Array.isArray(elem))) {
+        newArray = func(newArray);
+    }
+    return newArray;
+}
+  
+function func(arr) {
+    let newArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            for (let j = 0; j < arr[i].length; j++) {
+                newArray.push(arr[i][j]);
+            }
+        } else {
+            newArray.push(arr[i]);
+        }
+    }
+    return newArray;
+}
+//  STEAMROLL ARRAY
 
+// EVERYTHING BE TRUE
+function truthCheck(collection, pre) {
+    return collection.every(obj => obj[pre]);
+}
 
-/*
-Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+// ARGUMENTS OPTIONAL
+function addTogether() {
+    var args = arguments;
+    if (args.length === 2) {
+        if (typeof args[0] !== 'number' || typeof args[1] !== 'number') {
+            return undefined;
+        } else {
+            return args[0] + args[1];
+        }
+    } else {
+        if (typeof args[0] !== 'number') {
+            return undefined;
+        } else {
+            return function(num) {
+                if (typeof arguments[0] !== 'number') {
+                    return undefined;
+                } else {
+                    return args[0] + num; 
+                }
+            };
+        }
+    }
+}
 
-In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+// MAKE A PERSON
+var Person = function(firstAndLast) {
+    var name = firstAndLast.split(' ');
 
-The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+    this.getFullName = function() {
+        return name.join(' ');
+    };
 
-uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
-uniteUnique([1, 3, 2], [1, [5]], [2, [4]]) should return [1, 3, 2, [5], [4]].
-uniteUnique([1, 2, 3], [5, 2, 1]) should return [1, 2, 3, 5].
-uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]) should return [1, 2, 3, 5, 4, 6, 7, 8].
+    this.getFirstName = function() {
+        return name[0];
+    };
 
+    this.getLastName = function() {
+        return name[1];
+    };
 
-*/
+    this.setFirstName = function(first) {
+        name[0] = first;
+    };
+
+    this.setLastName = function(last) {
+        name[1] = last;
+    };
+
+    this.setFullName = function(firstAndLast) {
+        name = firstAndLast.split(' ');
+    };
+};

@@ -80,7 +80,7 @@ function frankenSplice(arr1, arr2, n) {
 
 // Falsy Bouncer - remove falsy values from array
 function bouncer(arr) {
-    return arr.filter(value => !!value);
+    return arr.filter(value => value);
 }
 
 // Where do I belong - insert num into sorted array at lowest index
